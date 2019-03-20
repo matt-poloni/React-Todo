@@ -43,7 +43,13 @@ class App extends Component {
       newTask: '',
     })
   }
-  handleClearCompleted = e => {}
+  handleClearCompleted = e => {
+    e.preventDefault();
+
+    this.setState({
+      listItems: this.state.listItems.filter(li => !li.completed),
+    })
+  }
 
   render() {
     return (
@@ -57,7 +63,7 @@ class App extends Component {
           newTask={this.state.newTask}
           newTaskChange={this.handleNewTaskChange}
           addItem={this.handleAddItem}
-          clearCompleted={this.clearCompleted}
+          clearCompleted={this.handleClearCompleted}
         />
       </div>
     );

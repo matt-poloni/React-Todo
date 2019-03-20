@@ -13,7 +13,6 @@ const TodoForm = props => {
         onClick={props.addItem}
         onKeyPress={ e => {
             if(e.key === 'Enter') {
-              e.preventDefault();
               props.addItem;
             }
           }
@@ -21,7 +20,11 @@ const TodoForm = props => {
       >
         Add Todo
       </button>
-      <button>Clear Completed</button>
+      <button
+        onClick={props.clearCompleted}
+      >
+        Clear Completed
+      </button>
     </form>
   )
 }
