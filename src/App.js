@@ -27,7 +27,19 @@ class App extends Component {
     }
   }
 
-  handleAddItem = e => {}
+  handleNewTaskChange = e => {}
+  handleAddItem = e => {
+    e.preventDefault();
+    const newTask = {
+      task: this.state.newTask,
+      completed: false,
+      id: Date.now();
+    }
+
+    this.setState({
+      listItems: [...this.state.listItems, newTask],
+    })
+  }
   handleClearCompleted = e => {}
 
   render() {
@@ -40,8 +52,9 @@ class App extends Component {
         <TodoForm
           listItems={this.state.listItems}
           newTask={this.state.newTask}
-          addItem={this.state.handleAddItem}
-          clearCompleted={this.state.clearCompleted}
+          newTaskChange={this.handleNewTaskChange}
+          addItem={this.handleAddItem}
+          clearCompleted={this.clearCompleted}
         />
       </div>
     );

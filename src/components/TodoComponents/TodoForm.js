@@ -3,7 +3,12 @@ import React from 'react';
 const TodoForm = props => {
   return (
     <form>
-      <input />
+      <input
+        type="text"
+        placeholder="Input a new task here"
+        value={props.newTask}
+        onChange={props.newTaskChange}
+      />
       <button>Add Todo</button>
       <button>Clear Completed</button>
     </form>
