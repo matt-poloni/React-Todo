@@ -13,12 +13,12 @@ class App extends Component {
     this.state = {
       listItems: [
         {
-          task: 'Test Item 1',
+          task: 'Completed Task',
           id: Date.now(),
-          completed: false,
+          completed: true,
         },
         {
-          task: 'Test Item 2',
+          task: 'Incomplete Task',
           id: Date.now() + 1,
           completed: false,
         },

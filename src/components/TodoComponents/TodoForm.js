@@ -9,7 +9,18 @@ const TodoForm = props => {
         value={props.newTask}
         onChange={props.newTaskChange}
       />
-      <button onClick={props.addItem}>Add Todo</button>
+      <button
+        onClick={props.addItem}
+        onKeyPress={ e => {
+            if(e.key === 'Enter') {
+              e.preventDefault();
+              props.addItem;
+            }
+          }
+        }
+      >
+        Add Todo
+      </button>
       <button>Clear Completed</button>
     </form>
   )
