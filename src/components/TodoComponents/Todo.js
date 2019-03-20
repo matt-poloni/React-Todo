@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Todo = props => {}
+const Todo = props => {
+  return (
+    <li>
+      {props.listItem.task}
+    </li>
+  )
+}
 
 export default Todo;
