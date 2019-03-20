@@ -1,4 +1,5 @@
 import React from 'react';
+import './Todo.css';
 
 const TodoForm = props => {
   return (
@@ -12,9 +13,7 @@ const TodoForm = props => {
       <button
         onClick={props.addItem}
         onKeyPress={ e => {
-            if(e.key === 'Enter') {
-              props.addItem;
-            }
+            if(e.key === 'Enter') { props.addItem }
           }
         }
       >

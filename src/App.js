@@ -13,12 +13,12 @@ class App extends Component {
     this.state = {
       listItems: [
         {
-          task: 'Completed Task',
+          task: 'Task 1',
           id: Date.now(),
           completed: true,
         },
         {
-          task: 'Incomplete Task',
+          task: 'Task 2',
           id: Date.now() + 1,
           completed: false,
         },
@@ -27,6 +27,12 @@ class App extends Component {
     }
   }
 
+  handleToggleComplete = e => {
+    const i = this.state.listItems.findIndex(li => li['id'].toString() === e.target.dataset.id);
+    let newArr = this.state.listItems;
+    newArr[i]['completed'] = !newArr[i]['completed'];
+    this.setState({ listItems: newArr });
+  }
   handleNewTaskChange = e => {
     this.setState({ newTask: e.target.value })
   }
@@ -57,6 +63,7 @@ class App extends Component {
         <h2>Todo List: MVP</h2>
         <TodoList
           listItems={this.state.listItems}
+          toggleComplete={this.handleToggleComplete}
         />
         <TodoForm
           listItems={this.state.listItems}
