@@ -27,17 +27,20 @@ class App extends Component {
     }
   }
 
-  handleNewTaskChange = e => {}
+  handleNewTaskChange = e => {
+    this.setState({ newTask: e.target.value })
+  }
   handleAddItem = e => {
     e.preventDefault();
     const newTask = {
       task: this.state.newTask,
+      id: Date.now(),
       completed: false,
-      id: Date.now();
     }
 
     this.setState({
       listItems: [...this.state.listItems, newTask],
+      newTask: '',
     })
   }
   handleClearCompleted = e => {}

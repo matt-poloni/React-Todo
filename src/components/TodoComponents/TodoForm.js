@@ -9,7 +9,7 @@ const TodoForm = props => {
         value={props.newTask}
         onChange={props.newTaskChange}
       />
-      <button>Add Todo</button>
+      <button onClick={props.addItem}>Add Todo</button>
       <button>Clear Completed</button>
     </form>
   )
