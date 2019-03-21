@@ -23,9 +23,18 @@ class App extends Component {
           completed: false,
         },
       ],
+      newSearch: '',
       newTask: '',
     }
   }
+
+  handleChanges = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  searchItems = () => {}
+
+  clearSearch = () => {}
 
   toggleComplete = id => {
     this.setState({
@@ -35,11 +44,6 @@ class App extends Component {
           item;
       })
     })
-
-  }
-
-  newTaskChange = e => {
-    this.setState({ newTask: e.target.value })
   }
 
   addItem = e => {
@@ -68,16 +72,31 @@ class App extends Component {
     return (
       <div className="wrap-app">
         <h2>Your To-Do List</h2>
+        <TodoForm
+          listItems={this.state.listItems}
+          name='newSearch'
+          textPH='Search for specific items'
+          value={this.state.newSearch}
+          valueChange={this.handleChanges}
+          textSubmit='Search'
+          addItem={this.searchItems}
+          textReset='Reset'
+          resetFunc={this.clearSearch}
+        />
         <TodoList
           listItems={this.state.listItems}
           toggleComplete={this.toggleComplete}
         />
         <TodoForm
           listItems={this.state.listItems}
-          newTask={this.state.newTask}
-          newTaskChange={this.newTaskChange}
-          addItem={this.addItem}
-          clearCompleted={this.clearCompleted}
+          name='newTask'
+          textPH='Input a new task here'
+          value={this.state.newTask}
+          valueChange={this.handleChanges}
+          textSubmit='Add Task'
+          submitFunc={this.addItem}
+          textReset='Clear Completed'
+          resetFunc={this.clearCompleted}
         />
       </div>
     );
