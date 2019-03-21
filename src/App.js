@@ -100,9 +100,9 @@ class App extends Component {
           textPH='Search for specific items'
           value={this.state.newSearch}
           valueChange={this.handleChanges}
-          textSubmit='Search'
+          textSubmit='Search Tasks'
           submitFunc={this.searchItems}
-          textReset='Reset'
+          textReset='Clear Search'
           resetFunc={this.clearSearch}
         />
         <TodoList
