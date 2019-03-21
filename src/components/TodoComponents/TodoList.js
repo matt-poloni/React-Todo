@@ -7,9 +7,9 @@ import './Todo.css';
 const TodoList = props => {
   return (
     <ul className="todo-list">
-      {props.listItems.map((li, i) => (
+      {props.listItems.map(li => (
         <Todo
-          key={i}
+          key={li.id}
           listItem={li}
           toggleComplete={props.toggleComplete}
         />
