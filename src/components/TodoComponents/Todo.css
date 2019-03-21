@@ -8,13 +8,21 @@
   color: black;
 }
 .todo-list li {
-  background-color: lightgray;
+  background-color: gainsboro;
   padding: 0.5rem;
   margin: 0.5rem 0;
+}
+.todo-list li:hover {
+  background-color: slategray;
+  color: white;
 }
 .todo-list li.complete {
   text-decoration: line-through;
   background-color: lightgreen;
+}
+.todo-list li.complete:hover {
+  background-color: limegreen;
+  color: white;
 }
 .todo-list li.filtered {
   display: none;
@@ -33,4 +41,10 @@
   padding: 0.75em 1em;
   border: 0;
   border-radius: 0.5rem;
+  background-color: firebrick;
+  color: white;
+}
+.todo-form button:hover {
+  background-color: maroon;
+  color: white;
 }
