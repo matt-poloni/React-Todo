@@ -36,7 +36,7 @@ class App extends Component {
 
   searchItems = e => {
     e.preventDefault();
-    
+
     this.setState({
       listItems: this.state.listItems.map(item => {
         return !item.task.includes(this.state.newSearch) ?
@@ -48,6 +48,13 @@ class App extends Component {
 
   clearSearch = e => {
     e.preventDefault();
+
+    this.setState({
+      listItems: this.state.listItems.map(item => {
+        return { ...item, filtered: false };
+      }),
+      newSearch: '',
+    })
   }
 
   toggleComplete = id => {
