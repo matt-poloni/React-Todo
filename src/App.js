@@ -30,11 +30,16 @@ class App extends Component {
   toggleComplete = id => {
     this.setState({
       listItems: this.state.listItems.map(item => {
-        item.id === id ?
-          { ...item, completed: !item.completed } :
-          item;
+        if(item.id === id) {
+          return {
+            ...item,
+            completed: !item.completed,
+          }
+        }
+        return item;
       })
     })
+
   }
 
   newTaskChange = e => {
