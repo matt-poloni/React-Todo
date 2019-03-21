@@ -3,7 +3,10 @@ import './Todo.css';
 
 const TodoForm = props => {
   return (
-    <form className="todo-form">
+    <form
+      className="todo-form"
+      onSubmit={props.addItem}
+    >
       <input
         type="text"
         placeholder="Input a new task here"
@@ -11,13 +14,9 @@ const TodoForm = props => {
         onChange={props.newTaskChange}
       />
       <button
-        onClick={props.addItem}
-        onKeyPress={ e => {
-            if(e.key === 'Enter') { props.addItem }
-          }
-        }
+        type="submit"
       >
-        Add Todo
+        Add Task
       </button>
       <button
         onClick={props.clearCompleted}
