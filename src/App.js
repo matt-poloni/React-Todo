@@ -16,11 +16,13 @@ class App extends Component {
           task: 'Prepopulated, Complete',
           id: Date.now(),
           completed: true,
+          filtered: false,
         },
         {
           task: 'Prepopulated, Not Complete',
           id: Date.now() + 1,
           completed: false,
+          filtered: false,
         },
       ],
       newSearch: '',
@@ -32,9 +34,21 @@ class App extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  searchItems = () => {}
+  searchItems = e => {
+    e.preventDefault();
+    
+    this.setState({
+      listItems: this.state.listItems.map(item => {
+        return !item.task.includes(this.state.newSearch) ?
+          { ...item, filtered: true } :
+          { ...item, filtered: false };
+      })
+    })
+  }
 
-  clearSearch = () => {}
+  clearSearch = e => {
+    e.preventDefault();
+  }
 
   toggleComplete = id => {
     this.setState({
@@ -52,6 +66,7 @@ class App extends Component {
       task: this.state.newTask,
       id: Date.now(),
       completed: false,
+      filtered: false,
     }
 
     this.setState({
@@ -79,7 +94,7 @@ class App extends Component {
           value={this.state.newSearch}
           valueChange={this.handleChanges}
           textSubmit='Search'
-          addItem={this.searchItems}
+          submitFunc={this.searchItems}
           textReset='Reset'
           resetFunc={this.clearSearch}
         />
