@@ -6,7 +6,7 @@ import './Todo.css';
 
 const TodoList = props => {
   return (
-    <ul>
+    <ul className="todo-list">
       {props.listItems.map(li => (
         <Todo
           key={li.id}

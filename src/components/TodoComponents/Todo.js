@@ -4,8 +4,7 @@ const Todo = props => {
   return (
     <li
       className={props.listItem.completed ? 'complete' : ''}
-      data-id={props.listItem.id}
-      onClick={props.toggleComplete}
+      onClick={() => props.toggleComplete(props.listItem.id)}
     >
       {props.listItem.task}
     </li>

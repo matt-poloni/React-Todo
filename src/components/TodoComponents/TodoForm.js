@@ -3,7 +3,7 @@ import './Todo.css';
 
 const TodoForm = props => {
   return (
-    <form>
+    <form className="todo-form">
       <input
         type="text"
         placeholder="Input a new task here"

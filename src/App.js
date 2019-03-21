@@ -1,8 +1,8 @@
+import './reset.css';
+import './index.css';
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
-import './reset.css';
-import './index.css';
 
 class App extends Component {
   // you will need a place to store your state in this component.
@@ -13,12 +13,12 @@ class App extends Component {
     this.state = {
       listItems: [
         {
-          task: 'Task 1',
+          task: 'Prepopulated, Complete',
           id: Date.now(),
           completed: true,
         },
         {
-          task: 'Task 2',
+          task: 'Prepopulated, Not Complete',
           id: Date.now() + 1,
           completed: false,
         },
@@ -27,16 +27,21 @@ class App extends Component {
     }
   }
 
-  handleToggleComplete = e => {
-    const i = this.state.listItems.findIndex(li => li['id'].toString() === e.target.dataset.id);
-    let newArr = this.state.listItems;
-    newArr[i]['completed'] = !newArr[i]['completed'];
-    this.setState({ listItems: newArr });
+  toggleComplete = id => {
+    this.setState({
+      listItems: this.state.listItems.map(item => {
+        item.id === id ?
+          { ...item, completed: !item.completed } :
+          item;
+      })
+    })
   }
-  handleNewTaskChange = e => {
+
+  newTaskChange = e => {
     this.setState({ newTask: e.target.value })
   }
-  handleAddItem = e => {
+
+  addItem = e => {
     e.preventDefault();
     const newTask = {
       task: this.state.newTask,
@@ -49,7 +54,8 @@ class App extends Component {
       newTask: '',
     })
   }
-  handleClearCompleted = e => {
+
+  clearCompleted = e => {
     e.preventDefault();
 
     this.setState({
@@ -60,17 +66,17 @@ class App extends Component {
   render() {
     return (
       <div className="wrap-app">
-        <h2>Todo List: MVP</h2>
+        <h2>Your To-Do List</h2>
         <TodoList
           listItems={this.state.listItems}
-          toggleComplete={this.handleToggleComplete}
+          toggleComplete={this.toggleComplete}
         />
         <TodoForm
           listItems={this.state.listItems}
           newTask={this.state.newTask}
-          newTaskChange={this.handleNewTaskChange}
-          addItem={this.handleAddItem}
-          clearCompleted={this.handleClearCompleted}
+          newTaskChange={this.newTaskChange}
+          addItem={this.addItem}
+          clearCompleted={this.clearCompleted}
         />
       </div>
     );
