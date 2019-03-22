@@ -3,26 +3,26 @@ import './Todo.css';
 
 const TodoForm = props => {
   return (
-    <form>
+    <form
+      className="todo-form"
+      onSubmit={props.submitFunc}
+    >
       <input
         type="text"
-        placeholder="Input a new task here"
-        value={props.newTask}
-        onChange={props.newTaskChange}
+        name={props.name}
+        placeholder={props.textPH}
+        value={props.value}
+        onChange={props.valueChange}
       />
       <button
-        onClick={props.addItem}
-        onKeyPress={ e => {
-            if(e.key === 'Enter') { props.addItem }
-          }
-        }
+        type="submit"
       >
-        Add Todo
+        {props.textSubmit}
       </button>
       <button
-        onClick={props.clearCompleted}
+        onClick={props.resetFunc}
       >
-        Clear Completed
+        {props.textReset}
       </button>
     </form>
   )

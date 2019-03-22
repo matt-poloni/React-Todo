@@ -1,3 +1,51 @@
-li.complete {
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem 0 2.5rem 3.5rem;
+}
+.todo-list i {
+  font-size: 1.25em;
+  color: black;
+}
+.todo-list li {
+  background-color: gainsboro;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+.todo-list li:hover {
+  background-color: slategray;
+  color: white;
+}
+.todo-list li.complete {
   text-decoration: line-through;
+  background-color: lightgreen;
+}
+.todo-list li.complete:hover {
+  background-color: forestgreen;
+  color: white;
+}
+.todo-list li.filtered {
+  display: none;
+}
+
+.todo-form {
+  display: flex;
+  margin-top: 2.5rem;
+}
+.todo-form input {
+  padding: 0.75em 0.5em;
+}
+.todo-form button {
+  height: auto;
+  margin-left: 1em;
+  padding: 0.75em 1em;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: firebrick;
+  color: white;
+}
+.todo-form button:hover {
+  background-color: maroon;
+  color: white;
 }
