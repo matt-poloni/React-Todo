@@ -4,78 +4,20 @@ import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
+
 class App extends Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
-  constructor() {
-    super();
-    this.state = {
-      listItems: [
-        {
-          task: 'Sprint Challenge - React Wars',
-          id: Date.now(),
-          completed: false,
-          filtered: false,
-        },
-        {
-          task: 'Sprint Challenge - Lambda Times, React',
-          id: Date.now() + 1,
-          completed: false,
-          filtered: false,
-        },
-        {
-          task: 'Functional Components I',
-          id: Date.now() + 2,
-          completed: true,
-          filtered: false,
-        },
-        {
-          task: 'Functional Components II',
-          id: Date.now() + 3,
-          completed: true,
-          filtered: false,
-        },
-        {
-          task: 'Class Components I',
-          id: Date.now() + 4,
-          completed: true,
-          filtered: false,
-        },
-        {
-          task: 'Class Components II',
-          id: Date.now() + 5,
-          completed: true,
-          filtered: false,
-        },
-        {
-          task: 'React Tooling',
-          id: Date.now() + 6,
-          completed: false,
-          filtered: false,
-        },
-        {
-          task: 'The React Lifecycle',
-          id: Date.now() + 7,
-          completed: false,
-          filtered: false,
-        },
-        {
-          task: 'React Composition Patterns',
-          id: Date.now() + 8,
-          completed: false,
-          filtered: false,
-        },
-        {
-          task: 'CSS in JS',
-          id: Date.now() + 9,
-          completed: false,
-          filtered: false,
-        },
-      ],
-      newSearch: '',
-      newTask: '',
-    }
+  constructor(props) {
+    super(props);
+    this.state = window.localStorage.appData ?
+      JSON.parse(window.localStorage.appData) :
+      {
+        listItems: props.emptyStorage,
+        newSearch: '',
+        newTask: '',
+      };
   }
 
   handleChanges = e => {
@@ -138,7 +80,13 @@ class App extends Component {
     })
   }
 
+  storeLocal = () => {
+    window.localStorage.appData = JSON.stringify(this.state);
+  }
+
   render() {
+    this.storeLocal();
+    
     return (
       <div className="wrap-app">
         <h2>Your To-Do List</h2>

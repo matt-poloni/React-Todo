@@ -9,7 +9,7 @@ const Todo = props => {
       className={complete + ' ' + filtered}
       onClick={() => props.toggleComplete(props.listItem.id)}
     >
-      <span class="fa-li" >
+      <span className="fa-li" >
         <i className={`far ${props.listItem.completed ? 'fa-check-square' : 'fa-square'}`}></i>
       </span>
       {props.listItem.task}
